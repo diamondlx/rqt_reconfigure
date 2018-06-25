@@ -337,12 +337,12 @@ Have a nice day
                   substitute(name=self.name, pkgname=self.pkgname))
             # print('**************************************************************')
             # print('**************************************************************')
-            self.generatecpp()
-            self.generatedoc()
-            self.generatewikidoc()
-            self.generateusage()
-            self.generatepy()
-            self.generaterclcpp()
+            #self.generatecpp()
+            #self.generatedoc()
+            #self.generatewikidoc()
+            #self.generateusage()
+            #self.generatepy()
+            self.generatercl()
             # self.deleteobsolete()
         except Exception:
             print("Error building srv %s.srv" % name)
@@ -539,7 +539,7 @@ Have a nice day
         f.close()
         print("Wrote header file in " + os.path.join(self.cpp_gen_dir, self.name + "Config.h"))
     
-    def generaterclcpp(self):
+    def generatercl(self):
         # Read the configuration manipulator template and insert line numbers and file name into template.
 
         def value_cpp(type_, value):

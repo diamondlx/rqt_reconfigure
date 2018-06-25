@@ -33,10 +33,7 @@ function(custom_executable subfolder target)
   DESTINATION lib/${PROJECT_NAME})
 endfunction()
 
-custom_executable(topics talker_float)
-custom_executable(topics listener_float)
 custom_executable(topics test_parameters)
-custom_executable(topics test_client)
 
 
 
