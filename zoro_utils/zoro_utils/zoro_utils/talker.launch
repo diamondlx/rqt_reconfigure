@@ -1,0 +1,27 @@
+<launch>
+  <arg name="server" default="localhost"/>
+  <arg name="port" default="22"/>
+  <arg name="user" default=""/>
+  <arg name="env_loader" default="~/.octopus/config/env_loaders/Shanqi-007-slave.env.sh"/>
+  <arg name="camera_serial" default = "17138688" />
+  <arg name="ns" default ="camera1" />
+  <arg name="paramfile" default = "param_single_roi_1280x720_rotation_0.yaml" />
+  <arg name="trigger" default = "false" />
+  <param name="map" value="123"/>
+  <machine name="$(arg server)" address="$(arg server)" ssh-port="$(arg port)" user="$(arg user)" env-loader="$(arg env_loader)"/>
+  <group ns="$(arg ns)">
+      <node machine="$(arg server)"
+        name="$(arg ns)"
+        pkg="demo_nodes_cpp"
+        type="talker"
+        args="$(arg camera_serial) $(arg trigger)"
+        output="screen">
+        <rosparam command="load" file="./$(arg paramfile)" />
+        <!--<rosparam command="load" file="$(find spinnaker_camera_driver)/param/$(arg paramfile)" />-->
+        <param name="heartbeat_id" value="$(arg ns)"/>
+        <param name="heartbeat" value="$(arg ns)"/>
+      </node>
+  </group>
+</launch>
+
+
