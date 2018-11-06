@@ -1,9 +1,0 @@
-# rqt_reconfigure
-
-### 改动
-
-+ 去除所有调用 rospy的debug信息
-+ 将由rqt_gui.main 启动界面 改为直接使用 ParamWidget("").show() 和 QApplication().exec_() 启动
-+ resource/ 中 部分ui 定义了包名 修改掉
-+ 部分调用rospkg，找到resource/ 文件夹位置，改为写死
-
